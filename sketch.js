@@ -45,17 +45,17 @@ function modelReady() {
 function draw() {
   image(video, 0, 0, width, height);
 
-  // 繪製臉部特徵點的連線
-  drawConnections(pointIndicesGroup1);
-  drawConnections(pointIndicesGroup2);
-  drawConnections(pointIndicesGroup3);
+  // 繪製三組臉部特徵點的連線
+  drawConnections(pointIndicesGroup1, color(255, 0, 0)); // 紅色
+  drawConnections(pointIndicesGroup2, color(0, 255, 0)); // 綠色
+  drawConnections(pointIndicesGroup3, color(128, 0, 128)); // 紫色
 }
 
-function drawConnections(pointIndices) {
+function drawConnections(pointIndices, lineColor) {
   if (predictions.length > 0) {
     const keypoints = predictions[0].scaledMesh;
 
-    stroke(255, 0, 0); // 設定線條顏色為紅色
+    stroke(lineColor); // 設定線條顏色
     strokeWeight(5); // 設定線條粗細為 5
     noFill();
 
